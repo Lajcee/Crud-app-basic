@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<style>
+     
+     .comments-container{
+         float: left;
+     }
+    
+    .clearfix {
+    overflow: auto;
+  }
+
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  div {
+    clear: left;
+  }
+</style>
+<body>
+  <h1 class="text-primary">CRUD App with Node and Express</h1>
+  <form action="/comments" method="POST">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="comment" name="comment">
+    <button type="submit">Submit</button>
+  </form>
+  <div class="row clearfix">
+  <div class="col names-container">
+    <h2>Comments</h2>
+        <ul class="names">
+            <!-- Loop through comments -->
+        <span style="font-weight: 600;">
+           <% for(var i = 0; i < comments.length; i++) { %>
+            <p><%= comments[i].name %></p>
+            <% } %>
+        </span>
+        </ul>
+    </div>
+
+    <div class="col comments-container">
+    <ul class="comments">
+        <!-- Loop through comments -->
+        <div style="padding-bottom:10px;"></div>
+       <% for(var i = 0; i < comments.length; i++) { %>
+        <p><%= comments[i].comment %></p>
+        <% } %>
+    </ul>
+</div>
+</div>
+</body>
+</html>
